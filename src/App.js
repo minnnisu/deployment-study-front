@@ -42,6 +42,13 @@ const App = () => {
   return (
     <div>
       <h1>상품 등록 앱 Ver.3</h1>
+      <div className="main-image-container">
+        <img
+          className="main-image"
+          src="http://minnnisu.iptime.org/mm/images/product.png"
+          alt="Example"
+        />
+      </div>
       <div className="form-container">
         <h2>상품 등록</h2>
         <form onSubmit={handleSubmit}>

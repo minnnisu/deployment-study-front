@@ -10,6 +10,17 @@ h1 {
   text-align: center;
 }
 
+.main-image-container {
+  display: flex;
+  justify-content: center; /* 가로 방향으로 가운데 정렬 */
+  align-items: center; /* 세로 방향으로 가운데 정렬 */
+}
+
+.main-image {
+  max-width: 160px;
+  height: auto;
+}
+
 .form-container {
   border-radius: 8px;
   padding: 20px;
