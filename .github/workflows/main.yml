@@ -38,8 +38,8 @@ jobs:
       - name: Compress Build File
         run: zip -r react-build-new build
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: react-build-file
           # A file, directory or wildcard pattern that describes what to upload
