@@ -36,14 +36,14 @@ jobs:
         run: npm run build
 
       - name: Compress Build File
-        run: zip -r react-build-new build
+        run: zip -r build build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: react-build-file
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./react-build-new.zip
+          path: ./build.zip
 
   deploy:
     needs: build
@@ -60,7 +60,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          source: "react-build-new.zip"
+          source: "build.zip"
           target: "~/deployment-study/nginx/html"
       - name: Execute Deploy.sh
         uses: appleboy/ssh-action@master
@@ -70,4 +70,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: |
+            cd ~/deployment-study/nginx/html
+            unzip build.zip
+            rm -rf build.zip
+            mv build react-build-new
             docker exec -i nginx_nginx_deployment_study_1 bash -c "cd /var/www/build && sh ./deploy.sh"
