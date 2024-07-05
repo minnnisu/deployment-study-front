@@ -12,25 +12,25 @@ const App = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const response = await axios.get("http://minnnisu.iptime.org/api/products");
+    const response = await axios.get("http://localhost:8080/api/products");
     setProducts(response.data);
   };
 
   const createProduct = async () => {
-    await axios.post("http://minnnisu.iptime.org/api/products", product);
+    await axios.post("http://localhost:8080/api/products", product);
     setProduct({ name: "", price: 0 });
     fetchProducts();
   };
 
   const updateProduct = async (id) => {
-    await axios.put(`http://minnnisu.iptime.org/api/products/${id}`, product);
+    await axios.put(`http://localhost:8080/api/products/${id}`, product);
     setProduct({ name: "", price: 0 });
     setEditing(false);
     fetchProducts();
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`http://minnnisu.iptime.org/api/products/${id}`);
+    await axios.delete(`http://localhost:8080/api/products/${id}`);
     fetchProducts();
   };
 
@@ -41,11 +41,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>상품 등록 앱 Ver.3</h1>
+      <h1>상품 등록 앱 Ver.4</h1>
       <div className="main-image-container">
         <img
           className="main-image"
-          src="http://minnnisu.iptime.org/mm/images/product.png"
+          src="http://localhost:8080/mm/images/product.png"
           alt="Example"
         />
       </div>
